@@ -17,7 +17,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: transparent;
+      background: white;
       z-index: 1000;
       text-align: center;
       padding: 1.5rem 0;
@@ -26,6 +26,25 @@
       box-shadow: none !important;    /* 👈 JUST IN CASE IT'S A SHADOW */
       margin-bottom: 0 !important;
     }
+
+    /* Skyline border under the header */
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -1px;                 /* overlap 1px to hide any seam */
+      height: 120px;                /* skyline height */
+      background: url("/assets/horizon.png") repeat-x center bottom;
+      background-size: auto 120px;  /* scale by height, keep aspect */
+      pointer-events: none;         /* purely decorative */
+      }
+    /* Mobile: shrink skyline */
+    @media (max-width: 640px) {
+      .hero::after { height: 80px; background-size: auto 80px; }
+      .spacer { height: 220px; }
+      }
+
+
     
     body {
       margin-top: 200px; /* adjust this if your hero is fixed and overlaps content */
