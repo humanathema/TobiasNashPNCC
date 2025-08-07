@@ -1,53 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tobias Nash for PNCC 2025</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-/* Keep logo visible */
-.hero {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: white;
-  z-index: 10;
-  text-align: center;
-  padding: 1rem 0;
-}
+    body {
+      font-family: sans-serif;
+      background-color: white;
+      color: black;
+      overflow-x: hidden;
+    }
 
-/* Horizon section appears as you scroll */
-.horizon-container {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  margin-top: 150px; /* Space for fixed header */
-}
+    header.hero {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      z-index: 10;
+      text-align: center;
+      padding: 1.5rem 1rem 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
 
-.horizon {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-  z-index: 1;
-}
+    .hero img {
+      max-width: 120px;
+      margin-bottom: 0.5rem;
+    }
 
-/* Black section that scrolls with it */
-.black-section {
-  background: black;
-  color: white;
-  padding: 3rem 1rem;
-  text-align: center;
-  z-index: 0;
-}
-</style>
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+    }
 
-<div class="hero">
-  <img src="/assets/logo.png" alt="Campaign Logo" style="max-height: 100px;">
-  <h1 style="margin: 0;">Tobias Nash for PNCC 2025</h1>
-  <p>KAHA TAHI – Strong Together</p>
-</div>
+    .hero p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
 
-<div class="horizon-container">
-  <img class="horizon" src="/assets/horizon.png" alt="City Horizon Silhouette">
-</div>
+    .spacer {
+      height: 250px; /* makes space for fixed hero */
+    }
 
-<div class="black-section">
-  <h2>Our Campaign Vision</h2>
-  <p>We believe in restoring pride, safety, and connection in our shared public spaces...</p>
-</div>
+    .horizon {
+      width: 100%;
+      display: block;
+    }
+
+    .black-section {
+      background-color: black;
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .black-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .black-section p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <img src="/assets/logo.png" alt="Campaign Logo">
+    <h1>Tobias Nash for PNCC 2025</h1>
+    <p>KAHA TAHI – Strong Together</p>
+  </header>
+
+  <div class="spacer"></div>
+
+  <img src="/assets/horizon.png" alt="City Horizon Silhouette" class="horizon">
+
+  <section class="black-section">
+    <h2>Our Campaign Vision</h2>
+    <p>
+      We believe in restoring pride, safety, and connection in our shared public spaces. This campaign is about 
+      bringing community together with practical solutions, transparency, and real action.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Tobias Nash for PNCC. All rights reserved.
+  </footer>
+</body>
+</html>
