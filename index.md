@@ -1,4 +1,11 @@
 ---
+layout: default
+title: ""
+nav_exclude: true
+---
+
+
+---
 title: Home
 nav_order: 1
 ---
