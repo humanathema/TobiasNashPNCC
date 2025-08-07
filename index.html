@@ -22,8 +22,15 @@
       text-align: center;
       padding: 1.5rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-bottom: none !important; /* 👈 THIS LINE REMOVES THE LINE */
+      box-shadow: none !important;    /* 👈 JUST IN CASE IT'S A SHADOW */
+      margin-bottom: 0 !important;
     }
-
+    
+    body {
+      margin-top: 200px; /* adjust this if your hero is fixed and overlaps content */
+      }
+    
     .hero img {
       max-width: 500px;
     }
