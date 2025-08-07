@@ -4,8 +4,55 @@ title: ""
 nav_exclude: true
 ---
 
-<div style="background: #000; color: #fff; padding: 2rem 1rem; text-align: center; border-bottom: 5px solid #333;">
-  <img src="/assets/logo.png" alt="Campaign Logo" style="max-width: 150px; margin-bottom: 1rem;">
-  <h1 style="margin: 0; font-size: 2.5rem;">Tobias Nash for PNCC 2025</h1>
-  <p style="font-size: 1.3rem; font-weight: 500;">KAHA TAHI – Strong Together</p>
+<style>
+/* Keep logo visible */
+.hero {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  z-index: 10;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Horizon section appears as you scroll */
+.horizon-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: 150px; /* Space for fixed header */
+}
+
+.horizon {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+/* Black section that scrolls with it */
+.black-section {
+  background: black;
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  z-index: 0;
+}
+</style>
+
+<div class="hero">
+  <img src="/assets/logo.png" alt="Campaign Logo" style="max-height: 100px;">
+  <h1 style="margin: 0;">Tobias Nash for PNCC 2025</h1>
+  <p>KAHA TAHI – Strong Together</p>
+</div>
+
+<div class="horizon-container">
+  <img class="horizon" src="/assets/horizon.png" alt="City Horizon Silhouette">
+</div>
+
+<div class="black-section">
+  <h2>Our Campaign Vision</h2>
+  <p>We believe in restoring pride, safety, and connection in our shared public spaces...</p>
 </div>
