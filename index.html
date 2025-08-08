@@ -1,61 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tobias Nash for PNCC</title>
+
+  <!-- If hosted at /TobiasNashPNCC/, this makes asset paths simple -->
   <base href="/TobiasNashPNCC/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { font-family: sans-serif; margin: 0; }
-    .hero { display: grid; grid-template-columns: 1fr 2fr; min-height: 420px; }
-    .hero-left {
-      background: #000; color: #fff; padding: 2rem;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      position: relative; overflow: hidden;
+    :root{
+      --ink:#0b0b0b;
+      --white:#ffffff;
+      --gold:#D39B3A;
+      --deep-blue:#23406D;     /* tweak to taste */
+      --mid-blue:#2F4F86;
+      --heading:#E49A2F;       /* “About Me” orange */
+      --text:#F5F7FB;          /* light text on gradient */
+      --muted:#C9D3E6;
+      --brand-purple:#4C3FD4;  /* for links/buttons if needed */
     }
-    /* skyline strip as a border along the bottom of left column */
-    
-    .hero-left img { max-width: 150px; margin-bottom: 1rem; }
-    .hero-right {
-      background: #fff; color: #000; padding: 2rem;
-      display: flex; align-items: center; gap: 1.25rem;
+
+    *{box-sizing:border-box}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:#fff;}
+
+    /* Top split area */
+    .hero{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 420px;
     }
-    .hero-right img { max-width: 150px; border-radius: 6px; }
-    .horizon-strip {
-      content:""; position:absolute; left:0; right:0; bottom:0; height:120px;
+
+    /* LEFT column: white with large logo */
+    .hero-left{
+      background: var(--white);
+      padding: 24px 16px;
+      display:flex; align-items:flex-start; justify-content:flex-start;
+    }
+    .logo-wrap{
+      display:flex; flex-direction:column; align-items:flex-start; gap:14px;
+    }
+    .logo{
+      width: 180px; height:auto; display:block;
+      filter: drop-shadow(0 0 0 rgba(0,0,0,0)); /* crisp */
+    }
+    .wordmark{
+      margin-top: 8px;
+      line-height:1.1;
+      font-weight:700;
+      font-size: 28px;
+      letter-spacing:.5px;
+    }
+    .wordmark .vote{ color:#3C33CC; font-weight:700;} /* VOTE in purple */
+    .wordmark .nash{ color:#000; }
+    .wordmark .pncc{ color:var(--gold); font-weight:700;}
+    .kaha{ margin-top:6px; color:#5A4AE0; font-weight:800; letter-spacing:1px; }
+
+    /* RIGHT column: gradient panel */
+    .hero-right{
+      padding: 26px 28px;
+      background: linear-gradient(90deg, var(--deep-blue) 0%, var(--mid-blue) 45%, var(--gold) 100%);
+      color: var(--text);
+      display:grid; grid-template-columns: 160px 1fr; gap: 18px; align-items:start;
+    }
+    .about-photo{ width:160px; border-radius:4px; display:block; }
+
+    .about h2{
+      margin:0 0 12px 0;
+      color: var(--heading);
+      font-weight:800;
+      letter-spacing:.5px;
+      font-size: 28px;
+    }
+    .about p{
+      margin:0 0 14px 0;
+      color: var(--text);
+      font-size: 16px;
+      line-height:1.6;
+    }
+    .about p + p{ border-top: 1px solid rgba(255,255,255,.35); padding-top:12px; }
+
+    /* CTA + socials row under the right panel content if needed later */
+    .cta-row{ margin-top: 8px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    .btn{
+      background:#5A4AE0; color:#fff; border:0; padding:10px 16px; border-radius:4px;
+      font-weight:700; text-decoration:none; display:inline-block;
+    }
+    .btn:hover{ filter:brightness(1.05); }
+    .socials{ display:flex; gap:12px; align-items:center; }
+    .socials a{ color:var(--muted); text-decoration:none; font-size:20px; }
+
+    /* Big white body area below */
+    .spacer{
+      height: 520px;  /* room to breathe; adjust */
+      background: #fff;
+    }
+
+    /* Full-width skyline strip at bottom */
+    .horizon-strip{
+      height: 140px;
       background: url('assets/horizon.jpg') repeat-x center bottom;
-      background-size: auto 120px; opacity: 0.9; pointer-events:none;
+      background-size: auto 140px;
     }
-    .section { padding: 3rem 2rem; border-top: 1px solid #ddd; }
-    .footer { background:#000; color:#fff; padding:2rem; text-align:center; }
+
+    /* Footer (optional black block) */
+    .footer{
+      background:#000; color:#fff; padding: 18px; text-align:center; font-size:14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero-left{ padding:18px 16px; }
+      .logo{ width:150px; }
+      .hero-right{ grid-template-columns: 120px 1fr; }
+      .about-photo{ width:120px; }
+    }
+    @media (max-width: 560px){
+      .hero-right{ grid-template-columns: 1fr; }
+      .about-photo{ width: 160px; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="hero">
+  <!-- Split header area -->
+  <section class="hero">
+    <!-- Left: logo + slogan on white -->
     <div class="hero-left">
-      <img src="assets/logo.png" alt="Campaign Logo">
-      <h1>KAHA TAHI</h1>
-      <p>Strong Together</p>
-    </div>
-
-    <div class="hero-right">
-      <img src="assets/tobiasphoto.jpg" alt="Tobias Nash">
-      <div>
-        <h2>About Me</h2>
-        <p>Short paragraph about you, your background, and your commitment to the community...</p>
+      <div class="logo-wrap">
+        <img class="logo" src="assets/logo.png" alt="Vote Nash PNCC logo">
+        <div class="wordmark">
+          <span class="vote">VOTE</span> <span class="nash">NASH</span> <span class="pncc">PNCC</span>
+        </div>
+        <div class="kaha">KAHA TAHI</div>
       </div>
     </div>
-  </div>
-  <div class="horizon-strip"></div>
 
-  <div class="section">
-    <h2>Section Title</h2>
-    <p>More content here...</p>
-  </div>
-
-  <div class="footer">
-    <p>Contact info or social links…</p>
-  </div>
-
-</body>
-</html>
+    <!-- Right: gradient about block -->
+    <div class="hero-right">
+      <img class="about-photo" src="assets/tobiasphoto.jpg" alt="Tobias Nash">
+      <div class="about">
+        <h2>About Me</h2>
+        <p>I am a local teacher and parent with a background in psychology, data and mental health support. I am running for council to build a safer,
