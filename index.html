@@ -1,132 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tobias Nash for PNCC 2025</title>
-  <meta name="description" content="KAHA TAHI – Strong Together" />
+  <meta charset="UTF-8">
+  <title>Tobias Nash for PNCC</title>
+  <base href="/TobiasNashPNCC/">
   <style>
-    /* ===== Brand (estimated from logo) ===== */
-    :root{
-      --brand-purple: #6253d9;  /* left side of logo */
-      --brand-gold:   #d79d4a;  /* right side of logo */
-      --ink:          #0b0b0b;
-      --paper:        #ffffff;
-      --muted:        #666;
-      --ring:         #111;     /* dark stroke */
+    body { font-family: sans-serif; margin: 0; }
+    .hero { display: grid; grid-template-columns: 1fr 2fr; min-height: 420px; }
+    .hero-left {
+      background: #000; color: #fff; padding: 2rem;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      position: relative; overflow: hidden;
     }
-
-    /* ===== Reset + base ===== */
-    *,*::before,*::after{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; }
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.5;
+    /* skyline strip as a border along the bottom of left column */
+    
+    .hero-left img { max-width: 150px; margin-bottom: 1rem; }
+    .hero-right {
+      background: #fff; color: #000; padding: 2rem;
+      display: flex; align-items: center; gap: 1.25rem;
     }
-    img{ max-width:100%; height:auto; display:block; }
-    a{ color: var(--brand-purple); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-
-    /* ===== Header with skyline border ===== */
-    header.hero{
-      position: sticky; /* stays at top but scrolls away if needed */
-      top: 0; z-index: 10;
-      background: var(--paper);
-      border-bottom: 0; box-shadow: none;
+    .hero-right img { max-width: 150px; border-radius: 6px; }
+    .horizon-strip::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:120px;
+      background: url('assets/horizon.jpg') repeat-x center bottom;
+      background-size: auto 120px; opacity: 0.9; pointer-events:none;
     }
-    .hero-inner{
-      max-width: 1100px; margin: 0 auto; display: grid; gap: 1rem;
-      grid-template-columns: auto 1fr; align-items: center; padding: 1.25rem 1rem 1.5rem;
-    }
-    .brand-lockup{ display: flex; align-items: center; gap: .75rem; }
-    .brand-lockup img{ width: 84px; }
-    .brand-title{ font-size: clamp(1.25rem, 2.2vw, 1.75rem); font-weight: 800; letter-spacing: .5px; }
-    .brand-kicker{ font-weight: 700; font-size: .95rem; background: linear-gradient(90deg,var(--brand-purple),var(--brand-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero::after{
-      content: ""; position: absolute; left:0; right:0; bottom:-2px; height: 110px;
-      background: url('/assets/horizon.jpg') repeat-x center bottom;
-      background-size: auto 110px; pointer-events:none; filter: drop-shadow(0 0 0 var(--ring));
-    }
-
-    /* ===== Main sections ===== */
-    main{ max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
-
-    /* Eye-grabbing line under the skyline */
-    .intro{ padding-top: 140px; padding-bottom: 2rem; text-align: center; }
-    .intro h1{ font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .5rem; }
-    .intro p{ font-size: clamp(1rem, 2vw, 1.125rem); color: var(--muted); margin: 0 auto; max-width: 720px; }
-
-    /* About block with photo */
-    .about{ display:grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: start; margin: 2rem 0 3rem; }
-    .about .photo{ border-radius: 12px; overflow:hidden; box-shadow: 0 8px 30px rgba(0,0,0,.12); }
-    .about h2{ font-size: clamp(1.5rem, 3vw, 2rem); margin:.5rem 0 1rem; }
-    .about p{ margin: 0 0 1rem; }
-
-    /* CTA band */
-    .cta{
-      margin: 2rem 0 3rem; padding: 1.25rem; text-align:center;
-      border-radius: 14px; color: #fff; font-weight: 600; letter-spacing:.3px;
-      background: linear-gradient(90deg,var(--brand-purple),var(--brand-gold));
-    }
-
-    /* Footer with full skyline */
-    footer{
-      margin-top: 3rem; color:#eee; background: #000;
-      padding: 2rem 1rem 0; text-align:center;
-    }
-    .footer-skyline{ height: 140px; background: url('/TobiasNashPNCC/assets/horizon.jpg') repeat-x center bottom; background-size: auto 140px; }
-    .fineprint{ color:#aaa; font-size:.9rem; padding: .75rem 1rem 1.5rem; }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 800px){
-      .hero-inner{ grid-template-columns: 1fr; text-align:center; }
-      .about{ grid-template-columns: 1fr; }
-      .about .photo{ max-width: 320px; margin: 0 auto; }
-      .intro{ padding-top: 120px; }
-      .hero::after{ height: 90px; background-size: auto 90px; }
-    }
+    .section { padding: 3rem 2rem; border-top: 1px solid #ddd; }
+    .footer { background:#000; color:#fff; padding:2rem; text-align:center; }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="brand-lockup">
-        <img src="/TobiasNashPNCC/assets/logo.png" alt="Tobias Nash logo" />
-        <div>
-          <div class="brand-title">VOTE NASH PNCC</div>
-          <div class="brand-kicker">KAHA TAHI – Strong Together</div>
-        </div>
+
+  <div class="hero">
+    <div class="hero-left">
+      <img src="assets/logo.png" alt="Campaign Logo">
+      <h1>KAHA TAHI</h1>
+      <p>Strong Together</p>
+    </div>
+
+    <div class="hero-right">
+      <img src="assets/tobiasphoto.jpg" alt="Tobias Nash">
+      <div>
+        <h2>About Me</h2>
+        <p>Short paragraph about you, your background, and your commitment to the community...</p>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <section class="intro">
-      <h1>Stronger together. Safer streets. Practical action.</h1>
-      <p>Use this line as your hero copy. Two short sentences work best here. You can swap this out anytime without touching the layout.</p>
-    </section>
+  <div class="section">
+    <h2>Section Title</h2>
+    <p>More content here...</p>
+  </div>
 
-    <section class="about" id="about">
-      <div class="photo">
-        <img src="/TobiasNashPNCC/assets/tobiasphoto.jpg" alt="Tobias Nash" />
-      </div>
-      <div class="copy">
-        <h2>About Tobias</h2>
-        <p>Write your bio here. Keep it to 3–5 short paragraphs. This template mirrors the look you mocked up in Canva and stays readable on mobile.</p>
-        <p>Add a short list, links, or a CTA under this paragraph if you like.</p>
-      </div>
-    </section>
+  <div class="footer">
+    <p>Contact info or social links…</p>
+  </div>
 
-    <div class="cta">
-      Add a simple call-to-action here – email, donate link, volunteer sign‑up, or upcoming event.
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-skyline" aria-hidden="true"></div>
-    <div class="fineprint">© 2025 Tobias Nash | Authorised by Tobias Nash, Palmerston North</div>
-  </footer>
 </body>
 </html>
