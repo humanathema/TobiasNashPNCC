@@ -1,107 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tobias Nash for PNCC</title>
-  <!-- If deploying under /TobiasNashPNCC/ on GitHub Pages: -->
-  <base href="/TobiasNashPNCC/">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tobias Nash for PNCC 2025</title>
   <style>
+    /* --- Base --- */
     :root{
-      --purple:#3C33CC;   /* “VOTE / STRONG” */
-      --gold:#D39B3A;     /* “PNCC / TOGETHER” */
-      --ink:#0b0b0b;
-      --deep:#1E3B66;     /* flat panel fallback */
-      --light:#F7FAFF;
-      --panelText:#EEF3FF;
-      --heading:#E49A2F;  /* About Me heading */
+      --blue:#3A3F97;          /* slogan blue/purple */
+      --gold:#C98A33;          /* slogan gold/orange */
+      --navy:#163A66;          /* gradient start */
+      --ink:#0B1020;           /* headings */
+      --text:#f8f9fb;          /* text on gradient */
+      --muted:#e9edf3;         /* thin rule on gradient */
+      --gap: clamp(16px, 3vw, 28px);
+      --maxw: 1180px;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
+    *{box-sizing: border-box}
+    html,body{margin:0;padding:0;background:#fff;color:#111;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-    .hero{display:grid;grid-template-columns: minmax(280px,360px) 1fr;min-height:460px}
+    /* --- Layout --- */
+    .wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: clamp(12px, 3vw, 24px);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--gap);
+      align-items: start;
+      min-height: 70vh;
+    }
+
+    /* LEFT panel (white) */
     .left{
-      background:#fff;padding:28px 18px;display:flex;align-items:flex-start
+      background:#fff;
+      padding: clamp(8px, 1vw, 12px);
     }
-    .left .stack{display:flex;flex-direction:column;gap:10px}
-    .logo{width:180px;height:auto}
-    .wordmark{font-weight:800;letter-spacing:.3px;line-height:1.1}
-    .wordmark .vote{color:var(--purple);font-size:36px}
-    .wordmark .nash{color:#000;font-size:48px}
-    .wordmark .pncc{color:var(--gold);font-size:36px}
-    .kaha{color:var(--purple);font-weight:900;letter-spacing:1px}
-
+    .logo{
+      width: clamp(90px, 18vw, 140px);
+      display:block;
+    }
+    .brand{
+      margin-top: clamp(8px, 1.6vw, 14px);
+    }
+    .brand h1{
+      margin: 6px 0 2px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing:.4px;
+      font-size: clamp(26px, 5vw, 46px);
+      color:#111;
+    }
+    .brand h1 span.blue{ color: var(--blue); font-weight: 800; }
+    .brand h1 span.gold{ color: var(--gold); font-weight: 800; }
     .strap{
-      margin-top:22px;font-weight:900;font-size:28px;letter-spacing:.2px
+      margin-top:.2rem;
+      font-weight:800;
+      letter-spacing:.5px;
+      font-size: clamp(12px, 2.6vw, 16px);
     }
-    .strap .strong{color:var(--purple)}
-    .strap .together{color:var(--gold)}
-    .substrap{margin-top:10px;color:#23314d;font-weight:700;line-height:1.4}
+    .strap .blue{ color: var(--blue); }
+    .strap .gold{ color: var(--gold); }
 
-    .right{
-      padding:28px 28px;color:var(--panelText);
-      /* Gradient version */
-      background:linear-gradient(90deg,#213D6F 0%, #2C4D86 45%, var(--gold) 100%);
-      /* Flat version: comment the line above and uncomment next line */
-      /* background:var(--deep); */
-      display:grid;grid-template-columns: 190px 1fr;gap:18px;align-items:start
+    .promise{
+      margin-top: clamp(16px, 3vw, 24px);
+      font-weight:800;
+      letter-spacing:.4px;
+      font-size: clamp(16px, 3.6vw, 24px);
+      line-height:1.25;
     }
-    .photo{width:190px;border-radius:6px}
-    .about h2{margin:0 0 12px 0;color:var(--heading);font-size:32px;font-weight:900}
-    .about p{margin:0 0 14px 0;line-height:1.65}
-    .about p.divided{padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.35)}
+    .promise .blue{ color: var(--blue); }
+    .promise .gold{ color: var(--gold); }
+    .tag{
+      margin-top:10px;
+      font-size: clamp(13px, 2.6vw, 16px);
+      color:#2a2f3a;
+      max-width: 22ch;
+    }
 
-    .spacer{height:420px;background:#fff}
+    /* RIGHT panel (gradient card) */
+    .card{
+      background: radial-gradient(140% 100% at 20% 20%, var(--navy) 0%, #234a7b 42%, var(--gold) 100%);
+      color: var(--text);
+      border-radius: 10px;
+      padding: clamp(18px, 3.2vw, 28px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+    .card h2{
+      margin:0 0 14px;
+      font-size: clamp(22px, 3.8vw, 36px);
+      color: var(--gold);
+      letter-spacing:.3px;
+    }
+    .rule{
+      height:2px;background: linear-gradient(90deg, transparent, var(--muted), transparent);
+      margin: 12px 0 18px;
+    }
+    .about{
+      display:flex;
+      gap: clamp(14px, 2.4vw, 24px);
+      align-items:flex-start;
+    }
+    .about img{
+      width: clamp(120px, 18vw, 180px);
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.2);
+      flex: 0 0 auto;
+    }
+    .about p{margin:0 0 12px;max-width: 62ch}
 
-    .horizon {
-      height: 140px;
+    /* Horizon strip (bottom) */
+    .horizon{
+      margin-top: clamp(24px, 5vw, 48px);
+      width: 100%;
+      height: clamp(120px, 18vw, 180px);
       background: url('assets/horizon.jpg') no-repeat center bottom;
-      background-size: cover; /* fill the width, cropping if needed */
-      }
-
-
-    @media (max-width:960px){
-      .hero{grid-template-columns:1fr}
-      .right{grid-template-columns:140px 1fr}
-      .photo{width:140px}
-      .wordmark .nash{font-size:42px}
+      background-size: contain; /* switch to 'cover' if you prefer edge-to-edge with cropping */
     }
-    @media (max-width:560px){
-      .right{grid-template-columns:1fr}
-      .photo{width:180px}
+
+    /* --- Responsive --- */
+    @media (max-width: 900px){
+      .wrap{ grid-template-columns: 1fr; }
+      .left{ text-align:center }
+      .brand h1{ font-size: clamp(28px, 7vw, 40px); }
+      .tag{ margin-left:auto;margin-right:auto }
+      .about{ flex-direction: column; align-items:center; }
+      .about p{ text-align: left; }
     }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="left">
-      <div class="stack">
-        <img class="logo" src="assets/logo.png" alt="Vote Nash PNCC">
-        <div class="wordmark">
-          <div><span class="vote">VOTE</span></div>
-          <div><span class="nash">NASH</span> <span class="pncc">PNCC</span></div>
+  <main class="wrap">
+    <!-- LEFT: big logo + slogan -->
+    <section class="left">
+      <img class="logo" src="assets/logo.png" alt="Vote Nash PNCC logo" />
+      <div class="brand">
+        <h1>
+          <span class="blue">VOTE</span>&nbsp;NASH&nbsp;<span class="gold">PNCC</span>
+        </h1>
+        <div class="strap">
+          <span class="blue">KAHA</span>&nbsp;<span class="gold">TAHI</span>
         </div>
-        <div class="kaha">KAHA TAHI</div>
-
-        <div class="strap"><span class="strong">STRONG</span> <span class="together">TOGETHER</span></div>
-        <div class="substrap">BUILDING A SAFER,<br>MORE RESILIENT CITY</div>
       </div>
-    </div>
 
-    <div class="right">
-      <img class="photo" src="assets/tobiasphoto.jpg" alt="Tobias Nash">
+      <div class="promise">
+        <span class="blue">STRONG</span>&nbsp;<span class="gold">TOGETHER</span>
+      </div>
+      <div class="tag">Building a safer, more resilient city.</div>
+    </section>
+
+    <!-- RIGHT: gradient “About Me” card -->
+    <section class="card">
+      <h2>About Me</h2>
       <div class="about">
-        <h2>About Me</h2>
-        <p class="divided">I am a local teacher and parent with a background in psychology, data and mental health support. I’m running for council to build a safer, more resilient community.</p>
-        <p>With a history of volunteering for community organisations and working with young people, I aim to develop a whānau safety network, providing positive alternatives for at-risk rangatahi.</p>
-        <p>Through the Samaritans and local men’s groups, I’ve seen the need for community wellbeing. My drop-in centre supports this with free gym sessions and a comfortable space to connect and learn.</p>
+        <img src="assets/tobiasphoto.jpg" alt="Tobias Nash" />
+        <div>
+          <p>I am a local teacher and parent with a background in psychology, data and mental health support. I’m running for council to build a safer, more resilient community.</p>
+          <div class="rule"></div>
+          <p>With a history of volunteering for community organisations and working with young people, I aim to develop a whānau safety network, providing positive alternatives for at-risk rangatahi.</p>
+          <p>Through the Samaritans and local men’s groups, I’ve seen the need for community wellbeing. My drop-in centre aims to support this with free gym sessions and a comfortable space to connect and learn.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="spacer"></section>
-  <div class="horizon" ></div>
+  <!-- Skyline strip -->
+  <div class="horizon" aria-hidden="true"></div>
 
 </body>
 </html>
