@@ -1,110 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tobias Nash for PNCC</title>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        background: white;
-    }
+  :root{
+    --purple:#4636c7;         /* adjust if yours differ */
+    --gold:#c98d2b;
+    --ink:#0f172a;            /* deep navy for body text if needed */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;color:#111;background:#fff}
 
-    .main {
-        display: flex;
-        flex: 1;
-    }
+  /* ====== HEADER (two columns) ====== */
+  .header{
+    display:grid;
+    grid-template-columns: 38% 62%;
+    gap: clamp(16px, 3vw, 28px);
+    align-items: start;
+    padding: clamp(20px,4vw,32px);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-    /* LEFT COLUMN */
-    .left {
-        flex: 1;
-        background: white;
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+  /* Left column */
+  .brand{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding-top: clamp(8px,1.5vw,16px);
+  }
+  .brand .logo{
+    width: min(260px, 90%);
+    height:auto;
+    display:block;
+    margin: 0 auto clamp(14px,1.8vw,20px);
+  }
+  .brand .stack{
+    line-height:1.05;
+    letter-spacing:.2px;
+  }
+  .brand .line{
+    font-weight:800;
+    font-size: clamp(28px, 5vw, 54px);
+  }
+  .brand .line .purple{color:var(--purple)}
+  .brand .line .gold{color:var(--gold)}
+  .brand .sub{
+    margin-top: clamp(8px,1.2vw,12px);
+    font-weight:800;
+    font-size: clamp(18px,3.4vw,30px);
+  }
+  .brand .strap{
+    margin-top: 14px;
+    font-size: clamp(14px,2.4vw,18px);
+    max-width: 22ch;
+    color:#222;
+  }
 
-    .logo {
-        max-width: 180px;
-        margin-bottom: 20px;
-    }
+  /* Right column (About card with gradient) */
+  .about{
+    background: radial-gradient(100% 120% at 0% 0%, #193c7a 0%, #1d3d76 40%, #2a4d83 55%, #c98d2b 100%);
+    color:#fff;
+    border-radius: 14px;
+    padding: clamp(18px,3.2vw,28px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.15);
+    position:relative;
+  }
+  .about h2{
+    margin:0 0 16px;
+    font-size: clamp(22px,3.2vw,34px);
+    color:#ffcc7a; /* warm heading, reads like your Canva */
+  }
+  .about .row{
+    display:grid;
+    grid-template-columns: 160px 1fr;
+    gap: clamp(14px,2.2vw,24px);
+    align-items:start;
+  }
+  .about img{
+    width:160px;height:160px;object-fit:cover;border-radius:10px;
+    box-shadow:0 6px 14px rgba(0,0,0,.25);
+  }
+  .about p{margin:0 0 14px;font-size: clamp(14px,2.2vw,17px);line-height:1.5}
 
-    .slogan {
-        font-size: 1.5rem;
-        line-height: 1.3;
-    }
-    .slogan strong {
-        font-weight: bold;
-    }
-    .blue { color: #354D9F; }
-    .gold { color: #C9933C; }
-    .black { color: #000; }
+  /* ====== MIDDLE SECTION (empty placeholder) ====== */
+  .middle{
+    max-width:1200px;margin: clamp(18px,3vw,28px) auto;
+    min-height: 120px; /* tweak or fill later */
+    padding: 0 clamp(20px,4vw,32px);
+  }
 
-    /* RIGHT COLUMN */
-    .right {
-        flex: 1.2;
-        background: linear-gradient(to right, #1E3B73, #C9933C);
-        color: white;
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+  /* ====== FOOTER with skyline as top border ====== */
+  .footer{
+    background:#000;
+    color:#fff;
+    padding: clamp(16px,2.5vw,22px) clamp(20px,4vw,32px) 40px;
+    position:relative;
+    min-height: 160px;
+  }
+  .footer::before{
+    content:"";
+    position:absolute; left:0; right:0; top:-2px;
+    height: 210px;                     /* height of the artwork band */
+    background-image:url("./assets/skyline.png");
+    background-size: 100% auto;        /* SCALE to width, no repeat */
+    background-repeat:no-repeat;
+    background-position: top center;
+    pointer-events:none;
+  }
+  .footer .inner{
+    max-width:1200px;margin: 200px auto 0; /* push content below skyline band */
+  }
 
-    .right h2 {
-        color: #C9933C;
-        font-size: 1.8rem;
-        margin-top: 0;
-    }
-
-    .right img {
-        max-width: 160px;
-        border-radius: 0;
-        margin-bottom: 20px;
-    }
-
-    .right p {
-        max-width: 500px;
-        line-height: 1.6;
-    }
-
-    /* SKYLINE STRIP */
-    .skyline {
-        width: 100%;
-        background: url('skyline.png') center bottom no-repeat;
-        background-size: contain;
-        height: 120px;
-    }
+  /* ====== Responsive: stack columns on small screens ====== */
+  @media (max-width: 840px){
+    .header{grid-template-columns: 1fr}
+    .about .row{grid-template-columns: 1fr}
+    .about img{width:140px;height:140px;margin-bottom:10px}
+    .brand .strap{max-width: 28ch}
+    .footer .inner{margin-top: 180px}
+  }
 </style>
 </head>
 <body>
 
-<div class="main">
-    <div class="left">
-        <img src="logo.png" alt="Vote Nash PNCC" class="logo">
-        <div class="slogan">
-            <span class="blue"><strong>VOTE</strong></span> <span class="black"><strong>NASH</strong></span> <span class="gold"><strong>PNCC</strong></span><br>
-            <span class="blue">KAHA TAHI</span><br><br>
-            <span class="blue"><strong>STRONG</strong></span> <span class="gold"><strong>TOGETHER</strong></span><br>
-            <span class="black">BUILDING A SAFER,<br>MORE RESILIENT CITY</span>
+  <!-- ===== Header (logo left, about right) ===== -->
+  <header class="header">
+    <section class="brand">
+      <img class="logo" src="./assets/logo.png" alt="Vote Nash PNCC logo" />
+      <div class="stack">
+        <div class="line"><span class="purple">VOTE</span> NASH <span class="gold">PNCC</span></div>
+        <div class="sub" style="color:var(--purple);">KAHA</div>
+        <div class="sub" style="color:var(--gold);">TAHI</div>
+      </div>
+      <p class="strap"><span style="color:var(--purple);font-weight:800;">STRONG</span> <span style="color:var(--gold);font-weight:800;">TOGETHER</span><br/>Building a safer, more resilient city.</p>
+    </section>
+
+    <section class="about">
+      <h2>About Me</h2>
+      <div class="row">
+        <img src="./assets/profile.jpg" alt="Tobias Nash" />
+        <div>
+          <p>I am a local teacher and parent with a background in psychology, data and mental health support. I am running for council to build a safer, more resilient community.</p>
+          <p>With a history of volunteering for community organisations and working with young people, I aim to develop a whānau safety network, providing positive alternatives for at-risk rangatahi.</p>
+          <p>Through the Samaritans and local men’s groups, I’ve seen the need for community wellbeing. My drop-in centre aims to support this with free gym sessions and a comfortable space to connect and learn.</p>
         </div>
-    </div>
+      </div>
+    </section>
+  </header>
 
-    <div class="right">
-        <h2>About Me</h2>
-        <img src="profile.jpg" alt="Tobias Nash">
-        <p>I am a local teacher and parent with a background in psychology, data and mental health support. I am running for council to build a safer, more resilient community.</p>
-        <p>With a history of volunteering for community organisations and working with young people, I aim to develop a whānau safety network, providing positive alternatives for at-risk rangatahi.</p>
-        <p>In my experience with the Samaritans and local men’s groups, I’m seeing a real need for community wellbeing. My drop-in centre aims to support this with free gym sessions and a comfortable space to connect and learn.</p>
-    </div>
-</div>
+  <!-- ===== Middle (blank white content block for later) ===== -->
+  <main class="middle">
+    <!-- Add sections here later (issues, events, sign-up, etc.) -->
+  </main>
 
-<div class="skyline"></div>
+  <!-- ===== Footer with skyline band ===== -->
+  <footer class="footer">
+    <div class="inner">
+      <p>&copy; 2025 Tobias Nash for PNCC • Authorised by Tobias Nash, Palmerston North</p>
+    </div>
+  </footer>
 
 </body>
 </html>
