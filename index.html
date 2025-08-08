@@ -3,143 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <title>Tobias Nash for PNCC</title>
-
-  <!-- If hosted at /TobiasNashPNCC/, this makes asset paths simple -->
+  <!-- If deploying under /TobiasNashPNCC/ on GitHub Pages: -->
   <base href="/TobiasNashPNCC/">
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{
+      --purple:#3C33CC;   /* “VOTE / STRONG” */
+      --gold:#D39B3A;     /* “PNCC / TOGETHER” */
       --ink:#0b0b0b;
-      --white:#ffffff;
-      --gold:#D39B3A;
-      --deep-blue:#23406D;     /* tweak to taste */
-      --mid-blue:#2F4F86;
-      --heading:#E49A2F;       /* “About Me” orange */
-      --text:#F5F7FB;          /* light text on gradient */
-      --muted:#C9D3E6;
-      --brand-purple:#4C3FD4;  /* for links/buttons if needed */
+      --deep:#1E3B66;     /* flat panel fallback */
+      --light:#F7FAFF;
+      --panelText:#EEF3FF;
+      --heading:#E49A2F;  /* About Me heading */
     }
-
     *{box-sizing:border-box}
-    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:#fff;}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
 
-    /* Top split area */
-    .hero{
-      display:grid;
-      grid-template-columns: 320px 1fr;
-      min-height: 420px;
+    .hero{display:grid;grid-template-columns: minmax(280px,360px) 1fr;min-height:460px}
+    .left{
+      background:#fff;padding:28px 18px;display:flex;align-items:flex-start
     }
+    .left .stack{display:flex;flex-direction:column;gap:10px}
+    .logo{width:180px;height:auto}
+    .wordmark{font-weight:800;letter-spacing:.3px;line-height:1.1}
+    .wordmark .vote{color:var(--purple);font-size:36px}
+    .wordmark .nash{color:#000;font-size:48px}
+    .wordmark .pncc{color:var(--gold);font-size:36px}
+    .kaha{color:var(--purple);font-weight:900;letter-spacing:1px}
 
-    /* LEFT column: white with large logo */
-    .hero-left{
-      background: var(--white);
-      padding: 24px 16px;
-      display:flex; align-items:flex-start; justify-content:flex-start;
+    .strap{
+      margin-top:22px;font-weight:900;font-size:28px;letter-spacing:.2px
     }
-    .logo-wrap{
-      display:flex; flex-direction:column; align-items:flex-start; gap:14px;
-    }
-    .logo{
-      width: 180px; height:auto; display:block;
-      filter: drop-shadow(0 0 0 rgba(0,0,0,0)); /* crisp */
-    }
-    .wordmark{
-      margin-top: 8px;
-      line-height:1.1;
-      font-weight:700;
-      font-size: 28px;
-      letter-spacing:.5px;
-    }
-    .wordmark .vote{ color:#3C33CC; font-weight:700;} /* VOTE in purple */
-    .wordmark .nash{ color:#000; }
-    .wordmark .pncc{ color:var(--gold); font-weight:700;}
-    .kaha{ margin-top:6px; color:#5A4AE0; font-weight:800; letter-spacing:1px; }
+    .strap .strong{color:var(--purple)}
+    .strap .together{color:var(--gold)}
+    .substrap{margin-top:10px;color:#23314d;font-weight:700;line-height:1.4}
 
-    /* RIGHT column: gradient panel */
-    .hero-right{
-      padding: 26px 28px;
-      background: linear-gradient(90deg, var(--deep-blue) 0%, var(--mid-blue) 45%, var(--gold) 100%);
-      color: var(--text);
-      display:grid; grid-template-columns: 160px 1fr; gap: 18px; align-items:start;
+    .right{
+      padding:28px 28px;color:var(--panelText);
+      /* Gradient version */
+      background:linear-gradient(90deg,#213D6F 0%, #2C4D86 45%, var(--gold) 100%);
+      /* Flat version: comment the line above and uncomment next line */
+      /* background:var(--deep); */
+      display:grid;grid-template-columns: 190px 1fr;gap:18px;align-items:start
     }
-    .about-photo{ width:160px; border-radius:4px; display:block; }
+    .photo{width:190px;border-radius:6px}
+    .about h2{margin:0 0 12px 0;color:var(--heading);font-size:32px;font-weight:900}
+    .about p{margin:0 0 14px 0;line-height:1.65}
+    .about p.divided{padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.35)}
 
-    .about h2{
-      margin:0 0 12px 0;
-      color: var(--heading);
-      font-weight:800;
-      letter-spacing:.5px;
-      font-size: 28px;
-    }
-    .about p{
-      margin:0 0 14px 0;
-      color: var(--text);
-      font-size: 16px;
-      line-height:1.6;
-    }
-    .about p + p{ border-top: 1px solid rgba(255,255,255,.35); padding-top:12px; }
+    .spacer{height:420px;background:#fff}
 
-    /* CTA + socials row under the right panel content if needed later */
-    .cta-row{ margin-top: 8px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
-    .btn{
-      background:#5A4AE0; color:#fff; border:0; padding:10px 16px; border-radius:4px;
-      font-weight:700; text-decoration:none; display:inline-block;
-    }
-    .btn:hover{ filter:brightness(1.05); }
-    .socials{ display:flex; gap:12px; align-items:center; }
-    .socials a{ color:var(--muted); text-decoration:none; font-size:20px; }
-
-    /* Big white body area below */
-    .spacer{
-      height: 520px;  /* room to breathe; adjust */
-      background: #fff;
-    }
-
-    /* Full-width skyline strip at bottom */
-    .horizon-strip{
+    .horizon {
       height: 140px;
-      background: url('assets/horizon.jpg') repeat-x center bottom;
-      background-size: auto 140px;
-    }
+      background: url('assets/horizon.jpg') no-repeat center bottom;
+      background-size: cover; /* fill the width, cropping if needed */
+      }
 
-    /* Footer (optional black block) */
-    .footer{
-      background:#000; color:#fff; padding: 18px; text-align:center; font-size:14px;
-    }
 
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      .hero-left{ padding:18px 16px; }
-      .logo{ width:150px; }
-      .hero-right{ grid-template-columns: 120px 1fr; }
-      .about-photo{ width:120px; }
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr}
+      .right{grid-template-columns:140px 1fr}
+      .photo{width:140px}
+      .wordmark .nash{font-size:42px}
     }
-    @media (max-width: 560px){
-      .hero-right{ grid-template-columns: 1fr; }
-      .about-photo{ width: 160px; }
+    @media (max-width:560px){
+      .right{grid-template-columns:1fr}
+      .photo{width:180px}
     }
   </style>
 </head>
 <body>
 
-  <!-- Split header area -->
   <section class="hero">
-    <!-- Left: logo + slogan on white -->
-    <div class="hero-left">
-      <div class="logo-wrap">
-        <img class="logo" src="assets/logo.png" alt="Vote Nash PNCC logo">
+    <div class="left">
+      <div class="stack">
+        <img class="logo" src="assets/logo.png" alt="Vote Nash PNCC">
         <div class="wordmark">
-          <span class="vote">VOTE</span> <span class="nash">NASH</span> <span class="pncc">PNCC</span>
+          <div><span class="vote">VOTE</span></div>
+          <div><span class="nash">NASH</span> <span class="pncc">PNCC</span></div>
         </div>
         <div class="kaha">KAHA TAHI</div>
+
+        <div class="strap"><span class="strong">STRONG</span> <span class="together">TOGETHER</span></div>
+        <div class="substrap">BUILDING A SAFER,<br>MORE RESILIENT CITY</div>
       </div>
     </div>
 
-    <!-- Right: gradient about block -->
-    <div class="hero-right">
-      <img class="about-photo" src="assets/tobiasphoto.jpg" alt="Tobias Nash">
+    <div class="right">
+      <img class="photo" src="assets/tobiasphoto.jpg" alt="Tobias Nash">
       <div class="about">
         <h2>About Me</h2>
-        <p>I am a local teacher and parent with a background in psychology, data and mental health support. I am running for council to build a safer,
+        <p class="divided">I am a local teacher and parent with a background in psychology, data and mental health support. I’m running for council to build a safer, more resilient community.</p>
+        <p>With a history of volunteering for community organisations and working with young people, I aim to develop a whānau safety network, providing positive alternatives for at-risk rangatahi.</p>
+        <p>Through the Samaritans and local men’s groups, I’ve seen the need for community wellbeing. My drop-in centre supports this with free gym sessions and a comfortable space to connect and learn.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spacer"></section>
+  <div class="horizon" ></div>
+
+</body>
+</html>
